@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ACES Club Inc. — Member Waiver</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green: #1a7a4a;
+    --green-light: #e8f5ee;
+    --green-dark: #0f4f2f;
+    --gold: #c9a84c;
+    --black: #111111;
+    --gray: #666;
+    --border: #ddd;
+    --bg: #f8f8f6;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--black);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .header {
+    background: var(--green-dark);
+    padding: 28px 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    border: 2px solid rgba(201,168,76,0.2);
+    border-radius: 50%;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -30px;
+    width: 140px; height: 140px;
+    border: 2px solid rgba(201,168,76,0.15);
+    border-radius: 50%;
+  }
+
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: white;
+    letter-spacing: 6px;
+    line-height: 1;
+  }
+
+  .logo-sub {
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .doc-title {
+    margin-top: 16px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .progress-bar {
+    background: var(--green-dark);
+    padding: 0 24px 16px;
+  }
+
+  .progress-track {
+    background: rgba(255,255,255,0.15);
+    height: 3px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    background: var(--gold);
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 16px 60px;
+  }
+
+  .intro-card {
+    background: white;
+    border-left: 4px solid var(--green);
+    border-radius: 0 12px 12px 0;
+    padding: 20px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .intro-card p {
+    font-size: 13.5px;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  .intro-card strong {
+    color: var(--green-dark);
+  }
+
+  .section {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .section.active {
+    border-color: var(--green);
+  }
+
+  .section-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    background: var(--green);
+    color: white;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--green-dark);
+    margin-bottom: 12px;
+  }
+
+  .section-body {
+    font-size: 13px;
+    line-height: 1.75;
+    color: #444;
+  }
+
+  .section-body ul {
+    list-style: none;
+    margin: 8px 0;
+  }
+
+  .section-body ul li {
+    padding: 3px 0 3px 16px;
+    position: relative;
+  }
+
+  .section-body ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: bold;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 20px 0;
+  }
+
+  .form-section {
+    background: white;
+    border-radius: 12px;
+    padding: 24px 20px;
+    margin-top: 24px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    border: 1px solid var(--border);
+  }
+
+  .form-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--green-dark);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--green-light);
+  }
+
+  .field-group {
+    margin-bottom: 18px;
+  }
+
+  .field-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--gray);
+    margin-bottom: 6px;
+  }
+
+  .field-group input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--black);
+    background: var(--bg);
+    transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none;
+  }
+
+  .field-group input:focus {
+    outline: none;
+    border-color: var(--green);
+    background: white;
+  }
+
+  .field-group input.error {
+    border-color: #e53e3e;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  @media (max-width: 480px) {
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  .sig-area {
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .sig-area canvas {
+    display: block;
+    width: 100%;
+    height: 140px;
+    touch-action: none;
+    cursor: crosshair;
+  }
+
+  .sig-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 13px;
+    color: #bbb;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .sig-clear {
+    display: block;
+    margin-top: 8px;
+    background: none;
+    border: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--gray);
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+  }
+
+  .consent-box {
+    background: var(--green-light);
+    border: 1.5px solid var(--green);
+    border-radius: 10px;
+    padding: 16px;
+    margin-top: 20px;
+  }
+
+  .consent-label {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+
+  .consent-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    accent-color: var(--green);
+    cursor: pointer;
+  }
+
+  .consent-label span {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--green-dark);
+    font-weight: 500;
+  }
+
+  .submit-btn {
+    width: 100%;
+    margin-top: 24px;
+    padding: 16px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .submit-btn:hover { background: var(--green-dark); }
+  .submit-btn:active { transform: scale(0.99); }
+  .submit-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+  .error-msg {
+    color: #e53e3e;
+    font-size: 12px;
+    margin-top: 6px;
+    display: none;
+  }
+
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 48px 24px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-top: 24px;
+  }
+
+  .success-icon {
+    width: 72px; height: 72px;
+    background: var(--green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 32px;
+  }
+
+  .success-screen h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    letter-spacing: 3px;
+    color: var(--green-dark);
+    margin-bottom: 10px;
+  }
+
+  .success-screen p {
+    font-size: 14px;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 320px;
+    margin: 0 auto 20px;
+  }
+
+  .ref-badge {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green-dark);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo-text">ACES</div>
+  <div class="logo-sub">Club Incorporated</div>
+  <div class="doc-title">Participant Waiver & Release Agreement</div>
+</div>
+<div class="progress-bar">
+  <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
+</div>
+
+<div class="container">
+
+  <div class="intro-card">
+    <p>Please read this agreement carefully before signing. By completing this form you are agreeing to <strong>legally binding terms</strong> including assumption of risk, release of liability, and indemnification of ACES Club Inc. and facility owners and operators.</p>
+  </div>
+
+  <div class="section" id="s1">
+    <div class="section-title"><span class="section-num">1</span>Assumption of Risk</div>
+    <div class="section-body">
+      I understand that participation in tennis activities — including lessons, training sessions, organized play, tournaments, and related events — involves inherent risks of injury. These risks may include slips, falls, collisions, equipment-related injuries, weather conditions, and other unforeseen hazards.<br><br>
+      I voluntarily assume full responsibility for any risks of loss, property damage, or personal injury that may occur as a result of my participation.
+    </div>
+  </div>
+
+  <div class="section" id="s2">
+    <div class="section-title"><span class="section-num">2</span>Release of Liability</div>
+    <div class="section-body">
+      In consideration of being permitted to participate in activities organized by Aces Club Inc., I release, waive, discharge, and covenant not to sue:
+      <ul>
+        <li>Aces Club Inc. and its officers, directors, board members, employees, volunteers, instructors, agents, and representatives</li>
+        <li>facility owners and operators (the facility) and its board members, officers, employees, management, agents, and representatives</li>
+      </ul>
+      …from any and all liability, claims, demands, actions, or causes of action arising out of or related to participation in tennis activities conducted at the facility facilities or any other location used by Aces Club Inc.
+    </div>
+  </div>
+
+  <div class="section" id="s3">
+    <div class="section-title"><span class="section-num">3</span>Indemnification</div>
+    <div class="section-body">
+      I agree to indemnify and hold harmless Aces Club Inc., its contracted Lead Instructor(s), and the owners or operators of any facility used by Aces Club Inc., from any loss, liability, damage, or costs (including reasonable attorneys' fees) arising from my participation in activities, instruction sessions, or tournaments, or from my violation of facility rules or policies.
+    </div>
+  </div>
+
+  <div class="section" id="s4">
+    <div class="section-title"><span class="section-num">4</span>Compliance with Facility Rules</div>
+    <div class="section-body">
+      I agree to:
+      <ul>
+        <li>Follow all facility owners and operators rules and regulations regarding court use</li>
+        <li>Respect residents and shared amenities</li>
+        <li>Follow instructions from designated Aces Club organizers</li>
+        <li>Maintain sportsmanlike and respectful conduct at all times</li>
+      </ul>
+      Failure to comply may result in removal from participation.
+    </div>
+  </div>
+
+  <div class="section" id="s5">
+    <div class="section-title"><span class="section-num">5</span>Medical Responsibility</div>
+    <div class="section-body">
+      I affirm that I am physically capable of participating in tennis activities. I understand that Aces Club Inc. does not provide medical insurance coverage for participants. I am solely responsible for any medical expenses incurred as a result of participation at any location where Aces Club Inc. conducts activities.
+    </div>
+  </div>
+
+  <div class="section" id="s6">
+    <div class="section-title"><span class="section-num">6</span>Media Consent</div>
+    <div class="section-body">
+      I grant Aces Club Inc. permission to use photographs or video taken during activities for nonprofit and promotional purposes.
+    </div>
+  </div>
+
+  <div class="section" id="s7">
+    <div class="section-title"><span class="section-num">7</span>Acknowledgment</div>
+    <div class="section-body">
+      I have carefully read this agreement, fully understand its terms, and understand that I am giving up substantial legal rights by signing it. I sign this agreement freely and voluntarily.
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-section" id="formSection">
+    <div class="form-section-title">Complete & Sign</div>
+
+    <div class="two-col">
+      <div class="field-group">
+        <label>First Name *</label>
+        <input type="text" id="firstName" placeholder="First name" autocomplete="given-name">
+      </div>
+      <div class="field-group">
+        <label>Last Name *</label>
+        <input type="text" id="lastName" placeholder="Last name" autocomplete="family-name">
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Email Address *</label>
+      <input type="email" id="email" placeholder="your@email.com" autocomplete="email">
+    </div>
+
+    <div class="field-group">
+      <label>Phone Number *</label>
+      <input type="tel" id="phone" placeholder="(555) 000-0000" autocomplete="tel">
+    </div>
+
+    <div class="two-col">
+      <div class="field-group">
+        <label>Emergency Contact Name *</label>
+        <input type="text" id="ecName" placeholder="Contact name">
+      </div>
+      <div class="field-group">
+        <label>Emergency Contact Phone *</label>
+        <input type="tel" id="ecPhone" placeholder="(555) 000-0000">
+      </div>
+    </div>
+
+    <div class="field-group">
+      <label>Date *</label>
+      <input type="date" id="signDate">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="field-group">
+      <label>Signature — Draw Below *</label>
+      <div class="sig-area">
+        <canvas id="sigCanvas"></canvas>
+        <div class="sig-label" id="sigLabel">✍️ Draw your signature here<br><span style="font-size:11px">Use your finger or stylus</span></div>
+      </div>
+      <button class="sig-clear" onclick="clearSig()">Clear signature</button>
+    </div>
+
+    <div class="consent-box">
+      <label class="consent-label">
+        <input type="checkbox" id="consent">
+        <span>I have read, understand, and agree to all terms of this Participant Waiver, Release & Indemnification Agreement. I confirm this electronic signature is legally binding.</span>
+      </label>
+    </div>
+
+    <div class="error-msg" id="formError">Please complete all required fields, sign, and check the consent box.</div>
+
+    <button class="submit-btn" onclick="submitWaiver()">SUBMIT WAIVER</button>
+  </div>
+
+  <!-- SUCCESS -->
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✓</div>
+    <h2>You're All Set!</h2>
+    <p>Your waiver has been submitted successfully. Welcome to the ACES family — see you on the court!</p>
+    <div class="ref-badge" id="refBadge"></div>
+    <br><br>
+    <p style="font-size:12px; color:#aaa;">Save a screenshot of this page for your records.</p>
+  </div>
+
+</div>
+
+<script>
+// Set today's date as default
+document.getElementById('signDate').valueAsDate = new Date();
+
+// Progress bar based on scroll
+window.addEventListener('scroll', updateProgress);
+function updateProgress() {
+  const sections = document.querySelectorAll('.section');
+  const scrollY = window.scrollY;
+  const docH = document.body.scrollHeight - window.innerHeight;
+  const pct = Math.min(100, (scrollY / docH) * 100);
+  document.getElementById('progress').style.width = pct + '%';
+
+  sections.forEach(s => {
+    const rect = s.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.7) s.classList.add('active');
+  });
+}
+
+// Canvas signature
+const canvas = document.getElementById('sigCanvas');
+const ctx = canvas.getContext('2d');
+let drawing = false;
+let hasSig = false;
+
+function resizeCanvas() {
+  const rect = canvas.parentElement.getBoundingClientRect();
+  canvas.width = rect.width;
+  canvas.height = 140;
+  ctx.strokeStyle = '#111';
+  ctx.lineWidth = 2.5;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+
+function getPos(e) {
+  const rect = canvas.getBoundingClientRect();
+  const src = e.touches ? e.touches[0] : e;
+  return { x: src.clientX - rect.left, y: src.clientY - rect.top };
+}
+
+canvas.addEventListener('mousedown', e => { drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); });
+canvas.addEventListener('mousemove', e => { if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; document.getElementById('sigLabel').style.opacity = '0'; });
+canvas.addEventListener('mouseup', () => drawing = false);
+canvas.addEventListener('mouseleave', () => drawing = false);
+
+canvas.addEventListener('touchstart', e => { e.preventDefault(); drawing = true; const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); }, {passive:false});
+canvas.addEventListener('touchmove', e => { e.preventDefault(); if (!drawing) return; const p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); hasSig = true; document.getElementById('sigLabel').style.opacity = '0'; }, {passive:false});
+canvas.addEventListener('touchend', () => drawing = false);
+
+function clearSig() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  hasSig = false;
+  document.getElementById('sigLabel').style.opacity = '1';
+}
+
+async function submitWaiver() {
+  const fields = ['firstName','lastName','email','phone','ecName','ecPhone','signDate'];
+  let valid = true;
+
+  fields.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el.value.trim()) { el.classList.add('error'); valid = false; }
+    else el.classList.remove('error');
+  });
+
+  if (!hasSig) valid = false;
+  if (!document.getElementById('consent').checked) valid = false;
+
+  if (!valid) {
+    document.getElementById('formError').style.display = 'block';
+    document.getElementById('formSection').scrollIntoView({behavior:'smooth'});
+    return;
+  }
+
+  document.getElementById('formError').style.display = 'none';
+
+  const btn = document.querySelector('.submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'SUBMITTING...';
+
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const fullName = firstName + ' ' + lastName;
+  const ref = 'ACES-' + Date.now().toString(36).toUpperCase();
+  const signatureData = canvas.toDataURL();
+
+  const formData = {
+    'Full Name': fullName,
+    'First Name': firstName,
+    'Last Name': lastName,
+    'Email': document.getElementById('email').value.trim(),
+    'Phone': document.getElementById('phone').value.trim(),
+    'Emergency Contact Name': document.getElementById('ecName').value.trim(),
+    'Emergency Contact Phone': document.getElementById('ecPhone').value.trim(),
+    'Date Signed': document.getElementById('signDate').value,
+    'Electronic Signature': fullName,
+    'Consent': 'Agreed to all terms',
+    'Reference Number': ref,
+    'Submission Time': new Date().toLocaleString(),
+    '_subject': `ACES Waiver Signed — ${fullName}`
+  };
+
+  try {
+    const response = await fetch('https://formspree.io/f/xzdkjwdr', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+
+    if (response.ok) {
+      document.getElementById('refBadge').textContent = 'Reference: ' + ref;
+      document.getElementById('formSection').style.display = 'none';
+      document.getElementById('successScreen').style.display = 'block';
+      document.getElementById('successScreen').scrollIntoView({behavior:'smooth'});
+      document.getElementById('progress').style.width = '100%';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'SUBMIT WAIVER';
+      document.getElementById('formError').textContent = 'Submission failed. Please try again.';
+      document.getElementById('formError').style.display = 'block';
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'SUBMIT WAIVER';
+    document.getElementById('formError').textContent = 'Network error. Please check your connection and try again.';
+    document.getElementById('formError').style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
